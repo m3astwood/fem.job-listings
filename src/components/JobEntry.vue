@@ -164,7 +164,7 @@ h2 {
   border-radius: 0.25em;
 }
 
-@media(min-width: 376px) {
+@media(min-width: 760px) {
   .jobEntry {
     gap: 2em;
     grid-auto-flow: column;

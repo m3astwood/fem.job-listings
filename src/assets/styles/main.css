@@ -21,4 +21,12 @@ body {
 
 body > header {
   background-color: hsl(var(--prim-cyan));
+  max-height: 10em;
+  overflow: hidden;
+}
+
+body > header > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

@@ -132,6 +132,11 @@ header {
 
 h2 {
   color: var(--default-color, inherit);
+  cursor: pointer;
+}
+
+h2:hover {
+  color: var(--primary-color, darkgrey);
 }
 
 .details {
@@ -162,6 +167,12 @@ h2 {
   font-weight: 700;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.tags > li:hover {
+  background-color: var(--tag-bg-hover, grey);
+  color: white;
 }
 
 @media(min-width: 760px) {

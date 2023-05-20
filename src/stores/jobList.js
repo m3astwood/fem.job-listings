@@ -7,5 +7,7 @@ import { defineStore } from 'pinia';
 export const useJobListStore = defineStore('jobList', () => {
   const list = ref([]);
 
-  return { list };
+  const filters = ref([]);
+
+  return { list, filters };
 });

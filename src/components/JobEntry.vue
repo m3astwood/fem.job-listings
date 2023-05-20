@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <li class="jobEntry">
+  <li class="jobEntry" :class="{ feat: job.featured }">
     <div class="logo">
       <img :src="job.logo">
     </div>
@@ -60,7 +60,7 @@ ul, li {
   box-shadow: 0px 10px 20px var(--shadow-color, #66666630);
 }
 
-.jobEntry::before {
+.jobEntry.feat::before {
   content:'';
   position: absolute;
   top: 0;
@@ -68,6 +68,7 @@ ul, li {
   bottom: 0;
   width: 0.35em;
   background-color: var(--primary-color, black);
+  border-radius: 0.25em 0 0 0.25em;
 }
 
 .logo {

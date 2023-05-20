@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+@import './reset.css';
+
+:root {
+  --light-cyan: 180 52% 96%;
+  --light-grey-cyan: 180 31% 95%;
+  --dark-cyan: 180 8% 52%;
+  --darker-cyan: 180 14% 20%;
+
+  --ff-base: 'League Spartan', sans-serif;
+  --fs-base: 15px;
+}
+
+body {
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+}

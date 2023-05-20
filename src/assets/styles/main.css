@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
 @import './reset.css';
 
 :root {
+  --prim-cyan: 180 29% 50%;
   --light-cyan: 180 52% 96%;
   --light-grey-cyan: 180 31% 95%;
   --dark-cyan: 180 8% 52%;
@@ -14,4 +14,11 @@
 body {
   font-family: var(--ff-base);
   font-size: var(--fs-base);
+  color: hsl(var(--darker-cyan));
+  
+  background-color: hsl(var(--light-grey-cyan));
+}
+
+body > header {
+  background-color: hsl(var(--prim-cyan));
 }

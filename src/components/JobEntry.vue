@@ -9,21 +9,25 @@
     <div class="logo">
       <img :src="job.logo">
     </div>
-    <header>
-      <h2>{{ job.company }}</h2>
-      <p class="sub">{{ job.position }}</p>
 
-      <div class="highlight">
-        <span v-if="job.new" class="pill new">NEW!</span>
-        <span v-if="job.featured" class="pill feat">FEATURED</span>
+    <header>
+      <div class="top">
+        <p class="companyName">{{ job.company }}</p>
+
+        <div class="highlight">
+          <span v-if="job.new" class="pill new">NEW!</span>
+          <span v-if="job.featured" class="pill feat">FEATURED</span>
+        </div>
+      </div>
+
+      <h2>{{ job.position }}</h2>
+
+      <div class="details">
+        <span class="postedAt">{{ job.postedAt }}</span>
+        <span class="contract">{{ job.contract }}</span>
+        <span class="location">{{ job.location }}</span>
       </div>
     </header>
-
-    <div class="details">
-      <span class="postedAt">{{ job.postedAt }}</span>
-      <span class="contract">{{ job.contract }}</span>
-      <span class="location">{{ job.location }}</span>
-    </div>
 
     <!-- will include role, level, langauges, tools -->
     <ul class="tags">
@@ -53,7 +57,7 @@ ul, li {
   padding-block-start: 2.5em;
   padding-block-end: 1.5em;
   padding-inline: 1.5em;
-  box-shadow: 0px 10px 20px var();
+  box-shadow: 0px 10px 20px var(--shadow-color, #66666630);
 }
 
 .jobEntry::before {
@@ -82,19 +86,22 @@ ul, li {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
 
 header {
   display: grid;
+  grid-auto-flow: row;
   gap: 0.5em;
-  grid-template-areas: 'h m m m' 's s s s';
   align-items: center;
 }
 
-.highlight {
-  grid-area: m;
+.top {
   display: flex;
+}
+
+.highlight {
+  display: flex;
+  margin-inline-start: 1em;
   gap: 0.5em;
 }
 
@@ -114,18 +121,16 @@ header {
   background-color: var(--default-color);
 }
 
-h2, .sub {
+.companyName, h2 {
   font-size: 1.0125em;
   font-weight: 700;
 }
 
-header > h2 {
-  grid-area: h;
+.companyName {
   color: var(--primary-color, black);
 }
 
-header > .sub {
-  grid-area: s;
+h2 {
   color: var(--default-color, inherit);
 }
 
@@ -157,6 +162,34 @@ header > .sub {
   font-weight: 700;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
+}
+
+@media(min-width: 376px) {
+  .jobEntry {
+    gap: 2em;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr 1fr;
+    align-items: start;
+  }
+
+  .logo {
+    position: static;
+    width: 7em;
+    aspect-ratio: 1 / 1;
+  }
+
+  .tags {
+    border: none;
+    margin-inline-start: auto;
+  }
+
+  .companyName {
+    font-size: 1.25em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
 }
 
 </style>

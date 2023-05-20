@@ -1,35 +1,36 @@
 <script setup>
-  import logoImg from '../assets/images/photosnap.svg'
+  const props = defineProps({
+    job: Object
+  });
 </script>
 
 <template>
   <li class="jobEntry">
     <div class="logo">
-      <img :src="logoImg">
+      <img :src="job.logo">
     </div>
     <header>
-      <h2>Photosnap</h2>
-      <p class="sub">Senior Frontend Developer</p>
+      <h2>{{ job.company }}</h2>
+      <p class="sub">{{ job.position }}</p>
 
       <div class="highlight">
-        <span class="pill new">NEW!</span>
-        <span class="pill feat">FEATURED</span>
+        <span v-if="job.new" class="pill new">NEW!</span>
+        <span v-if="job.featured" class="pill feat">FEATURED</span>
       </div>
     </header>
 
     <div class="details">
-      <span class="postedAt">1d ago</span>
-      <span class="contract">Full Time</span>
-      <span class="location">USA only</span>
+      <span class="postedAt">{{ job.postedAt }}</span>
+      <span class="contract">{{ job.contract }}</span>
+      <span class="location">{{ job.location }}</span>
     </div>
 
     <!-- will include role, level, langauges, tools -->
     <ul class="tags">
-      <li>Frontend</li>
-      <li>Senior</li>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
+      <li data-tag-type="role">{{ job.role }}</li>
+      <li data-tag-type="level">{{ job.level }}</li>
+      <li v-for="lang in job.languages" :key="lang.id" data-tag-type="language">{{ lang }}</li>
+      <li v-for="tool in job.tools" :key="tool.id" data-tag-type="tool">{{ tool }}</li>
     </ul>
   </li>
 </template>
@@ -52,7 +53,7 @@ ul, li {
   padding-block-start: 2.5em;
   padding-block-end: 1.5em;
   padding-inline: 1.5em;
-  box-shadow: 0px 10px 20px var(--shadow-color, #66666630);
+  box-shadow: 0px 10px 20px var();
 }
 
 .jobEntry::before {

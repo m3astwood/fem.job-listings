@@ -19,7 +19,13 @@ export const useJobListStore = defineStore("jobList", () => {
   });
 
   function addFilter(data) {
-    filters.value = [...filters.value, data];
+    const filterList = [...filters.value, data].filter((val, idx, self) =>
+      idx === self.findIndex((v) => (
+        v.name === val.name && v.type == val.type
+      ))
+    );
+
+    filters.value = filterList;
   }
 
   async function getJobs() {

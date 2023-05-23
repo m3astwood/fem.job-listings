@@ -7,10 +7,6 @@ import FilterList from './components/FilterList.vue'
 const jobStore = useJobListStore()
 
 jobStore.getJobs()
-
-function filterJobs(data) {
-  jobStore.filters = [...jobStore.filters, {type: data.tagType, name: data.tagName }]
-}
 </script>
 
 <template>
@@ -32,7 +28,7 @@ function filterJobs(data) {
       :id="job.id" 
       :job="job"
 
-      @filterSelection="filterJobs"
+      @filterSelection="jobStore.addFilter"
 
       style="
       --primary-color: hsl(var(--prim-cyan)); 

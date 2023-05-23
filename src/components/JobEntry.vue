@@ -7,7 +7,7 @@
 
   function filterTag(event) {
     const { tagName, tagType } = event.target.dataset
-    emit('filterSelection', { tagName, tagType })
+    emit('filterSelection', { name: tagName, type: tagType })
   }
 </script>
 

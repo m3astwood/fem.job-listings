@@ -18,6 +18,10 @@ export const useJobListStore = defineStore("jobList", () => {
     });
   });
 
+  function addFilter(data) {
+    filters.value = [...filters.value, data];
+  }
+
   async function getJobs() {
     try {
       const req = await fetch("https://api.npoint.io/11c3acdb4b08e878fc21");
@@ -32,5 +36,5 @@ export const useJobListStore = defineStore("jobList", () => {
     }
   }
 
-  return { list, filters, filteredList, getJobs };
+  return { list, filters, filteredList, addFilter, getJobs };
 });

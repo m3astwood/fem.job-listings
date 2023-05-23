@@ -162,7 +162,6 @@ h2:hover {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 1em;
   border-block-start: 1px solid var(--divider-color, var(--secondary-color, grey));
   padding-block-start: 1.25em;
@@ -201,6 +200,7 @@ h2:hover {
   .tags {
     border: none;
     margin-inline-start: auto;
+    justify-content: flex-end;
   }
 
   .companyName {

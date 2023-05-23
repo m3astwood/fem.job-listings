@@ -189,6 +189,16 @@ h2:hover {
     grid-auto-flow: column;
     grid-template-columns: auto 1fr 1fr;
     align-items: start;
+    max-width: 1400px;
+    padding: 2em;
+  }
+
+  header {
+    display: block;
+  }
+
+  header * {
+    margin: 0.125em;
   }
 
   .logo {
@@ -199,8 +209,10 @@ h2:hover {
 
   .tags {
     border: none;
-    margin-inline-start: auto;
+    padding: 0;
+    margin: 0;
     justify-content: flex-end;
+    align-self: center;
   }
 
   .companyName {

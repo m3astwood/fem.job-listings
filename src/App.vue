@@ -48,6 +48,7 @@ ul {
   grid-auto-flow: rows;
   gap: 3em;
   padding: 1.5em;
+  justify-content: center;
 }
 
 ul:first-child {

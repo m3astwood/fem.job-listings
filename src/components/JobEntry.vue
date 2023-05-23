@@ -2,6 +2,13 @@
   const props = defineProps({
     job: Object
   });
+
+  const emit = defineEmits([ 'filterSelection' ])
+
+  function filterTag(event) {
+    const { tagName, tagType } = event.target.dataset
+    emit('filterSelection', { tagName, tagType })
+  }
 </script>
 
 <template>
@@ -31,10 +38,10 @@
 
     <!-- will include role, level, langauges, tools -->
     <ul class="tags">
-      <li data-tag-type="role">{{ job.role }}</li>
-      <li data-tag-type="level">{{ job.level }}</li>
-      <li v-for="lang in job.languages" :key="lang.id" data-tag-type="language">{{ lang }}</li>
-      <li v-for="tool in job.tools" :key="tool.id" data-tag-type="tool">{{ tool }}</li>
+      <li :data-tag-name="job.role" data-tag-type="role" @click="filterTag">{{ job.role }}</li>
+      <li :data-tag-name="job.level" data-tag-type="level" @click="filterTag">{{ job.level }}</li>
+      <li v-for="lang in job.languages" :key="lang.id" :data-tag-name="lang" data-tag-type="languages" @click="filterTag">{{ lang }}</li>
+      <li v-for="tool in job.tools" :key="tool.id" :data-tag-name="tool" data-tag-type="tools" @click="filterTag">{{ tool }}</li>
     </ul>
   </li>
 </template>
@@ -155,6 +162,7 @@ h2:hover {
 .tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 1em;
   border-block-start: 1px solid var(--divider-color, var(--secondary-color, grey));
   padding-block-start: 1.25em;

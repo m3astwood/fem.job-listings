@@ -1,30 +1,22 @@
 <script setup>
+import { ref } from 'vue'
 import { useJobListStore } from './stores/jobList.js'
 import JobEntry from './components/JobEntry.vue'
 import FilterList from './components/FilterList.vue'
 
 const jobStore = useJobListStore()
 
-getList()
+jobStore.getJobs()
 
-async function getList() {
-  try {
-    const req = await fetch('https://api.npoint.io/11c3acdb4b08e878fc21')
-    const json = await req.json()
-
-    console.log(json)
-
-    jobStore.list = json
-  } catch (err) {
-    console.error(err)
-  }
+function filterJobs(data) {
+  jobStore.filters = [...jobStore.filters, {type: data.tagType, name: data.tagName }]
 }
 </script>
 
 <template>
   <FilterList 
     v-if="jobStore.filters.length > 0" 
-    :filters="jobStore.filters"
+    v-model="jobStore.filters"
 
     style="
       --primary-color: hsl(var(--prim-cyan)); 
@@ -36,9 +28,11 @@ async function getList() {
   "></FilterList>
   <ul>
     <JobEntry 
-      v-for="job in jobStore.list" 
+      v-for="job in jobStore.filteredList" 
       :id="job.id" 
       :job="job"
+
+      @filterSelection="filterJobs"
 
       style="
       --primary-color: hsl(var(--prim-cyan)); 

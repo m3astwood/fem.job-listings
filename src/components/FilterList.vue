@@ -1,24 +1,36 @@
 <script setup>
   const props = defineProps({
-    filters: Array
-  });
+    modelValue: Array
+  })
+
+  const emit = defineEmits(['update:modelValue'])
+
+  function clearFilters() {
+    emit('update:modelValue', [])
+  }
+
+  function removeFilter(filter) {
+    const returnArray = props.modelValue.filter(entry => entry.name != filter.name)
+
+    emit('update:modelValue', returnArray)
+  }
 </script>
 
 <template>
   <div class="filters">
     <ul>
-      <li v-for="filter in filters">
+      <li v-for="filter in modelValue" :key="filter.id">
         <span>
-        {{ filter }} 
+        {{ filter.name }} 
         </span>
         <button>
-          <span>
+          <span @click="removeFilter(filter)">
             X
           </span>
         </button>
       </li>
     </ul>
-    <button>Clear</button>
+    <button @click.prevent="clearFilters">Clear</button>
   </div>
 </template>
 

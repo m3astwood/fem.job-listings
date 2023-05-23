@@ -14,7 +14,7 @@
 <template>
   <li class="jobEntry" :class="{ feat: job.featured }">
     <div class="logo">
-      <img :src="job.logo">
+      <img :src="job.logo" :alt="`Logo for ${job.company}`">
     </div>
 
     <header>

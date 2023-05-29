@@ -39,7 +39,7 @@
   display: flex;
   position: relative;
   top: -2.5em;
-  width: calc(100% - 3em);
+  width: min(calc(100% - 3em), calc(1300px - 3em));
   margin-inline: auto;
   background: white;
   padding: 1.5em;

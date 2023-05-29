@@ -45,10 +45,11 @@ jobStore.getJobs()
 <style scoped>
 ul {
   display: grid;
-  grid-auto-flow: rows;
+  grid-auto-flow: row;
   gap: 3em;
   padding: 1.5em;
-  justify-content: center;
+  max-width: 1300px;
+  margin-inline: auto;
 }
 
 ul:first-child {

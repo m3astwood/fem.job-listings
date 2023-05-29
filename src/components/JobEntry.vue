@@ -57,7 +57,7 @@ ul, li {
   --default-color: black;
   position: relative;
   display: grid;
-  grid-auto-flow: rows;
+  grid-auto-flow: row;
   gap: 0.5em;
   border-radius: 0.25em;
   background-color: white;
@@ -186,10 +186,8 @@ h2:hover {
 @media(min-width: 760px) {
   .jobEntry {
     gap: 2em;
-    grid-auto-flow: column;
     grid-template-columns: auto 1fr 1fr;
     align-items: start;
-    max-width: 1400px;
     padding: 2em;
   }
 
